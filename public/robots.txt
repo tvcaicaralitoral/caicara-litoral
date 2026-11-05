@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://caicaralitoral.com.br/sitemap.xml

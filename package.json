@@ -1,0 +1,10 @@
+{
+  "name": "caicara-litoral",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "teste": "node dev/servidor.mjs",
+    "gerar": "node scripts/atualizar.mjs",
+    "gerar-exemplo": "DEMO=1 node scripts/atualizar.mjs"
+  }
+}

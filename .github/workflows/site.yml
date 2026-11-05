@@ -1,0 +1,81 @@
+# Atualiza e publica o site caicaralitoral.com.br
+# - a cada 15 minutos: busca posts do Instagram + vídeos do YouTube e republica
+# - toda segunda-feira: renova o token do Instagram (ele vence em 60 dias)
+name: Atualizar site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '*/15 * * * *'
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: site
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Gerar site (Instagram + YouTube)
+        run: node scripts/atualizar.mjs
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  renovar-token:
+    # Só na rodada semanal de segunda-feira
+    if: github.event.schedule == '0 9 * * 1'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Renovar token do Instagram
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$IG_TOKEN" ] || [ -z "$GH_TOKEN" ]; then
+            echo "::warning::IG_TOKEN ou GH_PAT não configurados — token não renovado."
+            exit 0
+          fi
+          NOVO=$(curl -s "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_TOKEN" | jq -r '.access_token // empty')
+          if [ -n "$NOVO" ]; then
+            echo "::add-mask::$NOVO"
+            gh secret set IG_TOKEN --body "$NOVO" --repo "$GITHUB_REPOSITORY"
+            echo "Token renovado."
+          else
+            echo "::warning::Não foi possível renovar o token do Instagram."
+          fi
+
+      - name: Manter a atualização automática ligada
+        # O GitHub desliga tarefas agendadas de repositórios sem mudanças há 60 dias
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          date -u +"%Y-%m-%dT%H:%MZ" > .ultima-renovacao
+          git add .ultima-renovacao
+          git commit -m "Manter atualização automática ativa"
+          git push

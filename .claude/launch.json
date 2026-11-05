@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site-caicara",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["dev/servidor.mjs"],
+      "port": 8788
+    }
+  ]
+}
