@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surf e marés — Ubatuba, Caraguá, São Sebastião, Ilhabela | Caiçara Litoral</title>
+  <meta name="description" content="Tábua de marés de hoje, fase da lua e previsão de ondas para surf em Itamambuca, Maresias, Camburi, Juquehy, Castelhanos, Bonete e outras praias do Litoral Norte.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Caiçara Litoral">
+  <meta property="og:title" content="Surf e marés do Litoral Norte">
+  <meta property="og:description" content="Marés de hoje, lua e ondas nas principais praias, atualizados sozinhos.">
+  <meta property="og:url" content="https://caicaralitoral.com.br/mar/">
+  <meta property="og:image" content="https://caicaralitoral.com.br/img/compartilhar.jpg">
+  <meta name="theme-color" content="#003698">
+  <link rel="icon" href="/img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!--CABECALHO-->
+  <div class="topo">
+    <div class="container topo-linha">
+      <span id="hoje"></span>
+      <span class="topo-links">
+        <a href="https://wa.me/5512988413676" target="_blank" rel="noopener">WhatsApp (12) 98841-3676</a>
+        <a href="https://www.instagram.com/tvcaicaralitoral/" target="_blank" rel="noopener">@tvcaicaralitoral</a>
+      </span>
+    </div>
+  </div>
+  <header class="cabecalho">
+    <div class="container cabecalho-linha">
+      <a class="marca" href="/" aria-label="Caiçara Litoral — página inicial">
+        <img class="marca-logo" src="/img/logo.png" alt="Logo TV Caiçara Litoral" width="62" height="62">
+        <span class="marca-texto">
+          <span class="marca-nome">Caiçara Litoral</span>
+          <span class="marca-sub">Litoral Norte · Vale do Paraíba · Serra da Mantiqueira</span>
+        </span>
+      </a>
+      <form class="busca" action="/" role="search">
+        <input type="search" name="busca" placeholder="Buscar notícias" aria-label="Buscar notícias">
+        <button type="submit" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </form>
+    </div>
+  </header>
+  <nav class="menu" aria-label="Seções">
+    <div class="container menu-linha" id="menu"></div>
+  </nav>
+  <!--/CABECALHO-->
+
+  <main class="container mar-pagina">
+    <div class="tempo-cabeca">
+      <h1 class="titulo-secao">Surf e marés</h1>
+      <p class="tempo-status" id="mar-status">Carregando…</p>
+    </div>
+
+    <section class="mare-caixa" aria-labelledby="titulo-mare">
+      <h2 id="titulo-mare">🌊 Tábua de marés</h2>
+      <div class="mare-cidades" id="mare-cidades" role="group" aria-label="Cidade"></div>
+      <div id="mare-conteudo"><div class="carregando">Calculando marés…</div></div>
+    </section>
+
+    <section class="surf" aria-labelledby="titulo-surf">
+      <h2 class="titulo-secao" id="titulo-surf">🏄 Ondas nas praias agora</h2>
+      <p class="surf-legenda">Da melhor para a pior condição agora. Nota de 0 a 5 estrelas pelo tamanho e período da onda e pelo vento (terral ajuda, maral forte atrapalha).</p>
+      <div class="surf-grade" id="surf-grade"><div class="carregando">Carregando ondas…</div></div>
+    </section>
+
+    <p class="tempo-fonte">Dados: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> (modelos de ondas e de nível do mar). São previsões estimadas, para orientação. Para navegação use a tábua oficial da <a href="https://www.marinha.mil.br/chm/tabuas-de-mare" target="_blank" rel="noopener">Marinha do Brasil</a>.</p>
+  </main>
+
+  <!--RODAPE-->
+  <footer class="rodape">
+    <div class="container rodape-linha">
+      <div>
+        <strong class="rodape-marca">TV Caiçara Litoral</strong>
+        <p>Notícias do Litoral Norte, Vale do Paraíba e Serra da Mantiqueira.</p>
+      </div>
+      <div>
+        <p>WhatsApp: <a href="https://wa.me/5512988413676" target="_blank" rel="noopener">(12) 98841-3676</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/tvcaicaralitoral/" target="_blank" rel="noopener">@tvcaicaralitoral</a></p>
+      </div>
+    </div>
+    <div class="container rodape-copy">© <span id="ano"></span> TV Caiçara Litoral · caicaralitoral.com.br</div>
+  </footer>
+  <!--/RODAPE-->
+
+  <script type="module" src="/js/mar.js"></script>
+</body>
+</html>

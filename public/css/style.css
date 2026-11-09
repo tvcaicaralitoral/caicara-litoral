@@ -314,15 +314,6 @@ button { font: inherit; cursor: pointer; }
 .tempo-fonte { font-size: 13px; color: var(--texto-suave); margin-top: 22px; }
 .tempo-fonte a { color: var(--cor-meio); text-decoration: underline; }
 
-.tempo-mini { list-style: none; margin: 4px 0 14px; padding: 0; }
-.tempo-mini li { border-top: 1px solid var(--linha); }
-.tempo-mini li:first-child { border-top: 0; }
-.tempo-mini a { display: grid; grid-template-columns: 1fr 26px 40px 62px; align-items: center; gap: 6px; padding: 7px 0; font-size: 15px; }
-.tempo-mini .nome { font-weight: 600; }
-.tempo-mini .ic { font-size: 20px; text-align: center; }
-.tempo-mini strong { color: var(--cor-principal); font-size: 17px; text-align: right; }
-.tempo-mini small { color: #0b7f8a; font-size: 12.5px; text-align: right; }
-.bt-tempo { background: var(--cor-principal); }
 
 @media (max-width: 960px) {
   .tempo-layout { grid-template-columns: 1fr; }
@@ -339,3 +330,137 @@ button { font: inherit; cursor: pointer; }
   .tempo-info { grid-template-columns: 1fr 1fr; }
   .tempo-painel-agora { font-size: 44px; }
 }
+
+/* ---------- Surf e marés ---------- */
+.menu-linha a.menu-mar::before { content: '🌊 '; }
+.mar-pagina { margin-top: 26px; margin-bottom: 40px; }
+.mare-caixa { background: var(--fundo-marca); color: #fff; border-radius: var(--raio); padding: 20px 22px 16px; margin-bottom: 30px; }
+.mare-caixa h2 { font-family: var(--fonte-titulo); font-weight: 400; font-size: 32px; margin: 0 0 10px; }
+.mare-cidades { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 14px; }
+.mare-cidades button { flex: none; background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.4); border-radius: 999px; padding: 7px 14px; font-weight: 600; font-size: 14px; }
+.mare-cidades button[aria-pressed="true"] { background: #fff; color: var(--cor-principal); border-color: #fff; }
+.mare-topo { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.mare-topo > div { background: rgba(0,25,80,.35); border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.mare-prox { flex-direction: column; align-items: flex-start !important; gap: 0 !important; }
+.mare-prox strong { font-size: 21px; }
+.mare-topo small, .mare-topo span > small { display: block; font-size: 12.5px; opacity: .85; }
+.mare-topo strong { display: block; }
+.lua-icone, .mare-sol > span:first-child { font-size: 30px; line-height: 1; }
+.mare-dias { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mare-dia { background: rgba(255,255,255,.08); border-radius: 8px; padding: 12px 14px; min-width: 0; }
+.mare-dia h3 { font-family: var(--fonte-titulo); font-weight: 400; font-size: 24px; margin: 0 0 6px; }
+.mare-dia h3 small { font-family: var(--fonte-texto); font-size: 13px; opacity: .8; margin-left: 6px; }
+.curva-mare { width: 100%; height: auto; display: block; overflow: visible; }
+.curva-mare .area { fill: rgba(255,255,255,.16); }
+.curva-mare .linha { fill: none; stroke: #fff; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+.curva-mare .grade { stroke: rgba(255,255,255,.15); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.curva-mare .agora { stroke: var(--cor-destaque); stroke-width: 2; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.curva-mare .agora-txt { fill: var(--cor-destaque); font-size: 14px; font-weight: 700; }
+.curva-mare .pontos circle { fill: var(--cor-destaque); }
+.curva-mare .pontos text { fill: #fff; font-size: 15px; font-weight: 700; }
+.curva-eixo { display: flex; justify-content: space-between; font-size: 11px; opacity: .7; margin: 2px 0 8px; }
+.lista-mares { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.lista-mares li { display: grid; grid-template-columns: 16px 1fr auto; grid-template-rows: auto auto; column-gap: 6px; background: rgba(0,25,80,.35); border-radius: 6px; padding: 6px 10px; font-size: 13.5px; align-items: center; }
+.lista-mares .seta { grid-row: 1 / 3; font-size: 13px; }
+.lista-mares .alta .seta { color: #7fe3ec; }
+.lista-mares .baixa .seta { color: var(--cor-destaque); }
+.lista-mares strong { font-size: 17px; grid-row: 1 / 3; grid-column: 3; }
+.lista-mares small { opacity: .75; font-size: 12px; }
+.nota-fonte { font-size: 12.5px; opacity: .8; margin: 12px 0 0; }
+.sem-dado { opacity: .8; font-size: 14px; }
+
+.surf-legenda { color: var(--texto-suave); font-size: 14.5px; margin: -6px 0 14px; }
+.surf-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.praia { background: var(--branco); border-radius: var(--raio); padding: 14px 16px; box-shadow: 0 1px 3px rgba(10,29,79,.08); }
+.praia header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.praia h3 { font-family: var(--fonte-titulo); font-weight: 400; font-size: 25px; line-height: 1; margin: 0; color: var(--cor-escura); }
+.praia header small { color: var(--texto-suave); font-size: 13px; }
+.praia-nota { display: flex; align-items: center; gap: 8px; margin: 4px 0 8px; font-weight: 700; color: var(--cor-meio); font-size: 14px; }
+.estrelas { color: var(--cor-destaque); letter-spacing: 1px; font-size: 16px; white-space: nowrap; }
+.praia-dados { list-style: none; padding: 0; margin: 0 0 10px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.praia-dados li { background: #eef6fb; border-radius: 6px; padding: 5px 7px; display: flex; flex-direction: column; min-width: 0; }
+.praia-dados small { font-size: 11.5px; color: var(--texto-suave); }
+.praia-dados strong { font-size: 15px; color: var(--cor-escura); white-space: nowrap; }
+.praia-dias { width: 100%; border-collapse: collapse; font-size: 13px; }
+.praia-dias th, .praia-dias td { padding: 4px 4px; border-top: 1px solid var(--linha); text-align: left; }
+.praia-dias thead th { border-top: 0; color: var(--texto-suave); font-weight: 600; font-size: 12px; }
+.praia-dias tbody th { text-transform: capitalize; font-weight: 600; white-space: nowrap; }
+.praia-dias td strong { margin-right: 4px; }
+.praia-dias .estrelas { font-size: 12px; letter-spacing: 0; }
+
+@media (max-width: 860px) {
+  .mare-topo { grid-template-columns: 1fr 1fr; }
+  .mare-prox { grid-column: 1 / -1; }
+  .mare-dias { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .mare-caixa { margin-left: -16px; margin-right: -16px; border-radius: 0; padding: 16px; }
+  .mare-topo { grid-template-columns: 1fr; }
+  .praia-dados { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Faixas: AO VIVO e alertas ---------- */
+.faixa { display: block; color: #fff; font-size: 14.5px; }
+.faixa:hover { color: #fff; }
+.faixa-linha { display: flex; align-items: center; gap: 12px; padding-top: 8px; padding-bottom: 8px; min-width: 0; }
+.faixa-texto { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.faixa-acao { flex: none; font-weight: 700; white-space: nowrap; }
+.faixa-aovivo { background: #d4001a; }
+.faixa-aovivo:hover { background: #b80016; }
+.selo-aovivo { flex: none; display: inline-flex; align-items: center; gap: 6px; background: #fff; color: #d4001a; font-weight: 800; font-size: 12.5px; letter-spacing: .8px; padding: 3px 9px; border-radius: 4px; }
+.ponto { width: 8px; height: 8px; border-radius: 50%; background: currentColor; animation: piscar 1.2s infinite; }
+@keyframes piscar { 50% { opacity: .25; } }
+.faixa-agendada { background: var(--cor-escura); }
+.selo-agendada { flex: none; font-weight: 700; color: var(--cor-destaque); }
+.faixa-alerta { color: #1d1500; }
+.faixa-alerta.nivel-1 { background: #ffe24a; }
+.faixa-alerta.nivel-2 { background: #ff9a1f; }
+.faixa-alerta.nivel-3 { background: #e0141e; color: #fff; }
+.faixa-alerta summary { cursor: pointer; list-style: none; }
+.faixa-alerta summary::-webkit-details-marker { display: none; }
+.selo-alerta { flex: none; font-weight: 800; background: rgba(0,0,0,.82); color: #fff; padding: 3px 9px; border-radius: 4px; font-size: 12.5px; letter-spacing: .4px; }
+.faixa-alerta .faixa-acao::after { content: ' ▾'; }
+.faixa-alerta[open] .faixa-acao::after { content: ' ▴'; }
+.faixa-alerta[open] .faixa-texto { white-space: normal; }
+.alerta-detalhes { padding-bottom: 12px; font-size: 14px; }
+.alerta-item { background: rgba(255,255,255,.55); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+.nivel-3 .alerta-item { background: rgba(0,0,0,.18); }
+.alerta-item p { margin: 4px 0; }
+.alerta-item ul { margin: 4px 0 0; padding-left: 18px; }
+.alerta-fonte { margin: 4px 0 0; font-size: 13px; }
+.alerta-fonte a { text-decoration: underline; }
+.video-aovivo { background: #d4001a !important; }
+.texto-aovivo { color: #ff4d5e; }
+.videos-aovivo { box-shadow: 0 0 0 3px #d4001a; }
+
+/* ---------- Agora no Litoral (página inicial) ---------- */
+.agora { background: var(--fundo-marca); color: #fff; border-radius: var(--raio); padding: 16px 18px 18px; margin-top: 20px; }
+.agora-topo { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; margin-bottom: 12px; }
+.agora h2 { font-family: var(--fonte-titulo); font-weight: 400; font-size: 30px; line-height: 1; margin: 0; display: flex; align-items: center; gap: 10px; }
+.agora h2 small { font-family: var(--fonte-texto); font-size: 12.5px; opacity: .8; }
+.ponto-vivo { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #4dff88; box-shadow: 0 0 0 3px rgba(77,255,136,.25); animation: piscar 1.6s infinite; }
+.agora-cidades { display: flex; gap: 6px; overflow-x: auto; max-width: 100%; }
+.agora-cidades button { flex: none; background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 5px 12px; font-weight: 600; font-size: 13.5px; }
+.agora-cidades button[aria-pressed="true"] { background: #fff; color: var(--cor-principal); border-color: #fff; }
+.agora-blocos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.agora-bloco { background: rgba(0,25,80,.38); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; color: #fff; min-width: 0; font-size: 14px; transition: background .15s; }
+.agora-bloco:hover { background: rgba(0,25,80,.55); color: #fff; }
+.agora-bloco > small { text-transform: uppercase; letter-spacing: .8px; font-size: 11.5px; font-weight: 700; opacity: .8; }
+.agora-grande { display: flex; align-items: center; gap: 8px; font-size: 34px; font-weight: 700; line-height: 1.15; }
+.agora-grande span { font-size: 28px; }
+.agora-mare .agora-grande span { font-size: 18px; color: var(--cor-destaque); }
+.agora-linha { font-size: 13px; opacity: .92; }
+.agora-linha .estrelas { font-size: 13px; }
+.agora-mais { margin-top: auto; padding-top: 6px; font-weight: 700; font-size: 13px; color: var(--cor-destaque); }
+.agora-curva { margin-top: 4px; }
+.agora-curva .curva-eixo { display: none; }
+@media (prefers-reduced-motion: reduce) { .ponto, .ponto-vivo { animation: none; } }
+@media (max-width: 960px) { .agora-blocos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) {
+  .agora { margin: 0 -16px; border-radius: 0; padding: 14px 16px 16px; }
+  .agora h2 { font-size: 26px; }
+  .agora-grande { font-size: 28px; }
+  .agora-grande span { font-size: 22px; }
+  .faixa-aovivo .faixa-acao, .faixa-agendada .faixa-acao { display: none; }
+}
+.agora-curva .curva-mare text { display: none; }

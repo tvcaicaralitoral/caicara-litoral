@@ -42,6 +42,12 @@ http.createServer(async (req, res) => {
       res.writeHead(200, { 'content-type': 'application/json' });
       return res.end(JSON.stringify({ atualizado: Date.now(), videos: await baixarVideos() }));
     }
+    if (p === '/dados/aovivo.json') {
+      // Para testar a faixa AO VIVO: AOVIVO=1 node dev/servidor.mjs
+      res.writeHead(200, { 'content-type': 'application/json' });
+      const v = process.env.AOVIVO === '1' ? (await baixarVideos())[0] : null;
+      return res.end(JSON.stringify(v ? { ativo: true, id: v.id, titulo: '(teste) ' + v.titulo, inicio: new Date().toISOString() } : { ativo: false }));
+    }
     if (p.startsWith('/materia/')) {
       const id = (p.match(/^\/materia\/(\d+)/) || [])[1];
       const modelo = await readFile(join(raiz, 'public/noticia.html'), 'utf8');

@@ -7,26 +7,27 @@ export const REGIOES = [
   { slug: 'serra', nome: 'Serra da Mantiqueira' },
 ];
 
+// ibge = código do município (usado nos alertas do INMET)
 // lat/lon = centro da cidade; mar = ponto no mar em frente (ondas e temperatura da água)
 export const CIDADES_TEMPO = [
-  { nome: 'Ubatuba', slug: 'ubatuba', regiao: 'litoral', lat: -23.4336, lon: -45.0838, mar: [-23.45, -45.04] },
-  { nome: 'Caraguatatuba', slug: 'caraguatatuba', regiao: 'litoral', lat: -23.6203, lon: -45.4131, mar: [-23.63, -45.39] },
-  { nome: 'São Sebastião', slug: 'sao-sebastiao', regiao: 'litoral', lat: -23.7951, lon: -45.4143, mar: [-23.81, -45.40] },
-  { nome: 'Ilhabela', slug: 'ilhabela', regiao: 'litoral', lat: -23.7785, lon: -45.3581, mar: [-23.80, -45.33] },
-  { nome: 'Bertioga', slug: 'bertioga', regiao: 'litoral', lat: -23.8486, lon: -46.1396, mar: [-23.87, -46.13] },
-  { nome: 'Paraty', slug: 'paraty', regiao: 'litoral', lat: -23.2178, lon: -44.7131, mar: [-23.22, -44.68] },
-  { nome: 'São José dos Campos', slug: 'sao-jose-dos-campos', regiao: 'vale', lat: -23.1791, lon: -45.8872 },
-  { nome: 'Taubaté', slug: 'taubate', regiao: 'vale', lat: -23.0264, lon: -45.5553 },
-  { nome: 'Jacareí', slug: 'jacarei', regiao: 'vale', lat: -23.3053, lon: -45.9658 },
-  { nome: 'Caçapava', slug: 'cacapava', regiao: 'vale', lat: -23.1008, lon: -45.7069 },
-  { nome: 'Pindamonhangaba', slug: 'pindamonhangaba', regiao: 'vale', lat: -22.9246, lon: -45.4613 },
-  { nome: 'Guaratinguetá', slug: 'guaratingueta', regiao: 'vale', lat: -22.8162, lon: -45.1925 },
-  { nome: 'Aparecida', slug: 'aparecida', regiao: 'vale', lat: -22.8495, lon: -45.2341 },
-  { nome: 'Lorena', slug: 'lorena', regiao: 'vale', lat: -22.7334, lon: -45.1197 },
-  { nome: 'Paraibuna', slug: 'paraibuna', regiao: 'vale', lat: -23.3872, lon: -45.6639 },
-  { nome: 'Campos do Jordão', slug: 'campos-do-jordao', regiao: 'serra', lat: -22.7394, lon: -45.5914 },
-  { nome: 'Santo Antônio do Pinhal', slug: 'santo-antonio-do-pinhal', regiao: 'serra', lat: -22.8270, lon: -45.6631 },
-  { nome: 'São Bento do Sapucaí', slug: 'sao-bento-do-sapucai', regiao: 'serra', lat: -22.6888, lon: -45.7307 },
+  { nome: 'Ubatuba', slug: 'ubatuba', ibge: 3555406, regiao: 'litoral', lat: -23.4336, lon: -45.0838, mar: [-23.45, -45.04] },
+  { nome: 'Caraguatatuba', slug: 'caraguatatuba', ibge: 3510500, regiao: 'litoral', lat: -23.6203, lon: -45.4131, mar: [-23.63, -45.39] },
+  { nome: 'São Sebastião', slug: 'sao-sebastiao', ibge: 3550704, regiao: 'litoral', lat: -23.7951, lon: -45.4143, mar: [-23.81, -45.40] },
+  { nome: 'Ilhabela', slug: 'ilhabela', ibge: 3520400, regiao: 'litoral', lat: -23.7785, lon: -45.3581, mar: [-23.80, -45.33] },
+  { nome: 'Bertioga', slug: 'bertioga', ibge: 3506359, regiao: 'litoral', lat: -23.8486, lon: -46.1396, mar: [-23.87, -46.13] },
+  { nome: 'Paraty', slug: 'paraty', ibge: 3303807, regiao: 'litoral', lat: -23.2178, lon: -44.7131, mar: [-23.22, -44.68] },
+  { nome: 'São José dos Campos', slug: 'sao-jose-dos-campos', ibge: 3549904, regiao: 'vale', lat: -23.1791, lon: -45.8872 },
+  { nome: 'Taubaté', slug: 'taubate', ibge: 3554102, regiao: 'vale', lat: -23.0264, lon: -45.5553 },
+  { nome: 'Jacareí', slug: 'jacarei', ibge: 3524402, regiao: 'vale', lat: -23.3053, lon: -45.9658 },
+  { nome: 'Caçapava', slug: 'cacapava', ibge: 3508504, regiao: 'vale', lat: -23.1008, lon: -45.7069 },
+  { nome: 'Pindamonhangaba', slug: 'pindamonhangaba', ibge: 3538006, regiao: 'vale', lat: -22.9246, lon: -45.4613 },
+  { nome: 'Guaratinguetá', slug: 'guaratingueta', ibge: 3518404, regiao: 'vale', lat: -22.8162, lon: -45.1925 },
+  { nome: 'Aparecida', slug: 'aparecida', ibge: 3502507, regiao: 'vale', lat: -22.8495, lon: -45.2341 },
+  { nome: 'Lorena', slug: 'lorena', ibge: 3527207, regiao: 'vale', lat: -22.7334, lon: -45.1197 },
+  { nome: 'Paraibuna', slug: 'paraibuna', ibge: 3535606, regiao: 'vale', lat: -23.3872, lon: -45.6639 },
+  { nome: 'Campos do Jordão', slug: 'campos-do-jordao', ibge: 3509700, regiao: 'serra', lat: -22.7394, lon: -45.5914 },
+  { nome: 'Santo Antônio do Pinhal', slug: 'santo-antonio-do-pinhal', ibge: 3548203, regiao: 'serra', lat: -22.8270, lon: -45.6631 },
+  { nome: 'São Bento do Sapucaí', slug: 'sao-bento-do-sapucai', ibge: 3548609, regiao: 'serra', lat: -22.6888, lon: -45.7307 },
 ];
 
 // Códigos de tempo da OMM -> texto e ícone

@@ -10,7 +10,7 @@ import { linkMateria, esc } from '../public/js/render.js';
 import { SITE } from '../public/js/config.js';
 import { paginaMateria } from './pagina.mjs';
 import { baixarPosts } from './instagram.mjs';
-import { baixarVideos } from './youtube.mjs';
+import { baixarVideos, verificarAoVivo } from './youtube.mjs';
 
 const raiz = fileURLToPath(new URL('..', import.meta.url));
 const saida = join(raiz, '_site');
@@ -59,6 +59,19 @@ async function pegarVideos() {
   }
 }
 
+async function pegarAoVivo() {
+  const chave = process.env.YT_KEY;
+  if (!chave || DEMO) return { ativo: false, configurado: false };
+  try {
+    const r = await verificarAoVivo(chave);
+    console.log(r.ativo ? `✓ AO VIVO: ${r.titulo}` : `✓ YouTube: sem live agora${r.agendada ? " (agendada " + r.agendada.inicio + ")" : ""}`);
+    return { configurado: true, ...r };
+  } catch (e) {
+    console.error("✗ Verificação de live falhou:", e.message);
+    return { ativo: false, configurado: true, erro: true };
+  }
+}
+
 const json = (o) => JSON.stringify(o);
 
 async function main() {
@@ -66,11 +79,12 @@ async function main() {
   await cp(join(raiz, 'public'), saida, { recursive: true });
   if (DEMO) await cp(join(raiz, 'dev/demo'), join(saida, 'dev-demo'), { recursive: true });
 
-  const [noticias, youtube] = await Promise.all([pegarPosts(), pegarVideos()]);
+  const [noticias, youtube, aovivo] = await Promise.all([pegarPosts(), pegarVideos(), pegarAoVivo()]);
   const agora = Date.now();
   await mkdir(join(saida, 'dados'), { recursive: true });
   await writeFile(join(saida, 'dados/noticias.json'), json({ atualizado: agora, ...noticias }));
   await writeFile(join(saida, 'dados/youtube.json'), json({ atualizado: agora, ...youtube }));
+  await writeFile(join(saida, 'dados/aovivo.json'), json({ atualizado: agora, ...aovivo }));
 
   // Uma página por matéria: /materia/<id>-<titulo>/
   const modelo = await readFile(join(raiz, 'public/noticia.html'), 'utf8');
@@ -85,6 +99,7 @@ async function main() {
   const urls = [
     `<url><loc>${SITE.url}/</loc><changefreq>hourly</changefreq></url>`,
     `<url><loc>${SITE.url}/tempo/</loc><changefreq>hourly</changefreq></url>`,
+    `<url><loc>${SITE.url}/mar/</loc><changefreq>hourly</changefreq></url>`,
     ...noticias.posts.map((p) => `<url><loc>${esc(SITE.url + linkMateria(p))}</loc><lastmod>${esc(p.data)}</lastmod></url>`),
   ];
   await writeFile(join(saida, 'sitemap.xml'),

@@ -37,6 +37,7 @@ jobs:
         run: node scripts/atualizar.mjs
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          YT_KEY: ${{ secrets.YT_KEY }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

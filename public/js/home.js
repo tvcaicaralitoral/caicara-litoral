@@ -3,7 +3,7 @@ import { card, esc, linkMateria, nomeSecao } from './render.js';
 import { semAcento, SECOES } from './parse.js';
 import { PERSONAGENS } from './config.js';
 import { carregarVideos } from './videos.js';
-import { carregarTempoLateral } from './tempo-lateral.js';
+import { carregarAgora } from './agora.js';
 
 const POR_PAGINA = 12;
 const params = new URLSearchParams(location.search);
@@ -157,4 +157,4 @@ setInterval(async () => {
 carregar();
 // Vídeos só na página inicial (não em seções, personagens ou busca)
 if (!secao && !personagem && !busca) carregarVideos();
-carregarTempoLateral();
+if (!secao && !personagem && !busca) carregarAgora();

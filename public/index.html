@@ -60,6 +60,14 @@
   </div>
 
   <main class="container" id="conteudo">
+    <section class="agora" id="agora" aria-labelledby="titulo-agora" hidden>
+      <div class="agora-topo">
+        <h2 id="titulo-agora"><span class="ponto-vivo" aria-hidden="true"></span>Agora no Litoral <small id="agora-hora"></small></h2>
+        <div class="agora-cidades" id="agora-cidades" role="group" aria-label="Escolha a cidade"></div>
+      </div>
+      <div class="agora-blocos" id="agora-blocos"></div>
+    </section>
+
     <section class="destaque" id="destaque" aria-label="Destaques">
       <div class="carregando">Carregando notícias…</div>
     </section>
@@ -90,11 +98,6 @@
           <h2>Siga a TV Caiçara Litoral</h2>
           <p>As notícias chegam primeiro no nosso Instagram.</p>
           <a class="bt bt-insta" href="https://www.instagram.com/tvcaicaralitoral/" target="_blank" rel="noopener">@tvcaicaralitoral</a>
-        </div>
-        <div class="caixa caixa-tempo" id="tempo-lateral" hidden>
-          <h2>Tempo agora</h2>
-          <ul class="tempo-mini" id="tempo-mini"></ul>
-          <a class="bt bt-tempo" href="/tempo/">Previsão completa</a>
         </div>
         <div class="caixa">
           <h2>Cidades</h2>
