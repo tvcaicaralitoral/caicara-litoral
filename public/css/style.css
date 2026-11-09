@@ -464,3 +464,29 @@ button { font: inherit; cursor: pointer; }
   .faixa-aovivo .faixa-acao, .faixa-agendada .faixa-acao { display: none; }
 }
 .agora-curva .curva-mare text { display: none; }
+
+/* ---------- Brasil ---------- */
+.brasil-pagina { margin-top: 26px; margin-bottom: 40px; }
+.brasil-destaque { margin-bottom: 18px; }
+.brasil-destaque:empty { display: none; }
+.brasil-destaque .card-grande { display: grid; grid-template-columns: 1.3fr 1fr; background: var(--branco); border-radius: var(--raio); overflow: hidden; box-shadow: 0 1px 3px rgba(10,29,79,.08); }
+.brasil-destaque .card-grande .card-img { aspect-ratio: 16 / 10; }
+.brasil-destaque .card-grande .card-img img, .brasil-destaque .card-grande .sem-imagem { width: 100%; height: 100%; object-fit: cover; }
+.brasil-destaque .card-grande .card-texto { padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+.card-brasil .card-img img { object-position: center; }
+.brasil-home { margin-top: 30px; }
+.brasil-home-topo { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.ver-tudo { font-weight: 700; color: var(--cor-meio); white-space: nowrap; }
+.grade-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.credito-fonte { font-size: 12.5px; color: var(--texto-suave); margin: 10px 0 0; }
+.credito-fonte a { text-decoration: underline; }
+.materia-corpo h3, .materia-corpo h4 { font-family: var(--fonte-titulo); font-weight: 400; font-size: 26px; color: var(--cor-escura); margin: 26px 0 8px; }
+.materia-corpo a { color: var(--cor-meio); text-decoration: underline; }
+.materia-corpo ul, .materia-corpo ol { padding-left: 22px; margin: 0 0 18px; }
+.materia-corpo blockquote { border-left: 4px solid var(--cor-secundaria); margin: 0 0 18px; padding: 4px 0 4px 16px; color: #2f3a52; }
+@media (max-width: 960px) { .grade-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) {
+  .brasil-destaque .card-grande { grid-template-columns: 1fr; }
+  .brasil-destaque .card-grande .card-texto { padding: 14px 16px 18px; }
+}
+@media (max-width: 420px) { .grade-4 { grid-template-columns: 1fr; } }

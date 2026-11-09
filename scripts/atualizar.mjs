@@ -9,7 +9,9 @@ import { fileURLToPath } from 'node:url';
 import { parsePost, ehMateria } from '../public/js/parse.js';
 import { linkMateria, esc } from '../public/js/render.js';
 import { SITE } from '../public/js/config.js';
-import { paginaMateria } from './pagina.mjs';
+import { paginaMateria, paginaBrasil } from './pagina.mjs';
+import { baixarBrasil } from './agenciabrasil.mjs';
+import { linkBrasil } from '../public/js/brasil-render.js';
 import { baixarPosts } from './instagram.mjs';
 import { baixarVideos, verificarAoVivo } from './youtube.mjs';
 
@@ -60,6 +62,17 @@ async function pegarVideos() {
   }
 }
 
+async function pegarBrasil() {
+  try {
+    const noticias = await baixarBrasil(60);
+    console.log(`✓ Agência Brasil: ${noticias.length} notícias`);
+    return noticias;
+  } catch (e) {
+    console.error('✗ Agência Brasil falhou:', e.message);
+    return null; // as páginas antigas somem, mas a lista publicada continua (sem o texto)
+  }
+}
+
 async function pegarAoVivo() {
   const chave = process.env.YT_KEY;
   if (!chave || DEMO) return { ativo: false, configurado: false };
@@ -101,12 +114,15 @@ async function main() {
   await cp(join(raiz, 'public'), saida, { recursive: true });
   if (DEMO) await cp(join(raiz, 'dev/demo'), join(saida, 'dev-demo'), { recursive: true });
 
-  const [noticias, youtube, aovivo] = await Promise.all([pegarPosts(), pegarVideos(), pegarAoVivo()]);
+  const [noticias, youtube, aovivo, brasilNovo] = await Promise.all([pegarPosts(), pegarVideos(), pegarAoVivo(), pegarBrasil()]);
+  const brasil = brasilNovo || [];
   const agora = Date.now();
   await mkdir(join(saida, 'dados'), { recursive: true });
   await writeFile(join(saida, 'dados/noticias.json'), json({ atualizado: agora, ...noticias }));
   await writeFile(join(saida, 'dados/youtube.json'), json({ atualizado: agora, ...youtube }));
   await writeFile(join(saida, 'dados/aovivo.json'), json({ atualizado: agora, ...aovivo }));
+  // Lista leve (sem o texto) para as páginas; o texto vai direto na página de cada notícia
+  await writeFile(join(saida, 'dados/brasil.json'), json({ atualizado: agora, fonte: 'Agência Brasil', noticias: brasil.map(({ corpo, ...m }) => m) }));
 
   // Uma página por matéria: /materia/<id>-<titulo>/
   const modelo = await readFile(join(raiz, 'public/noticia.html'), 'utf8');
@@ -115,6 +131,12 @@ async function main() {
     await mkdir(pasta, { recursive: true });
     await writeFile(join(pasta, 'index.html'), paginaMateria(modelo, post));
   }
+  // Uma página por notícia do Brasil: /brasil/<titulo>/
+  for (const m of brasil) {
+    const pasta = join(saida, linkBrasil(m));
+    await mkdir(pasta, { recursive: true });
+    await writeFile(join(pasta, 'index.html'), paginaBrasil(modelo, m));
+  }
   // Endereço que não existe (ou matéria nova ainda não gerada): a página tenta achar sozinha
   await writeFile(join(saida, '404.html'), modelo);
 
@@ -122,6 +144,7 @@ async function main() {
     `<url><loc>${SITE.url}/</loc><changefreq>hourly</changefreq></url>`,
     `<url><loc>${SITE.url}/tempo/</loc><changefreq>hourly</changefreq></url>`,
     `<url><loc>${SITE.url}/mar/</loc><changefreq>hourly</changefreq></url>`,
+    `<url><loc>${SITE.url}/brasil/</loc><changefreq>hourly</changefreq></url>`,
     ...noticias.posts.map((p) => `<url><loc>${esc(SITE.url + linkMateria(p))}</loc><lastmod>${esc(p.data)}</lastmod></url>`),
   ];
   await writeFile(join(saida, 'sitemap.xml'),

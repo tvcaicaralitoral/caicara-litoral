@@ -4,6 +4,7 @@ import { semAcento, SECOES } from './parse.js';
 import { PERSONAGENS } from './config.js';
 import { carregarVideos } from './videos.js';
 import { carregarAgora } from './agora.js';
+import { buscarBrasil, cardBrasil } from './brasil-render.js';
 
 const POR_PAGINA = 12;
 const params = new URLSearchParams(location.search);
@@ -157,4 +158,13 @@ setInterval(async () => {
 carregar();
 // Vídeos só na página inicial (não em seções, personagens ou busca)
 if (!secao && !personagem && !busca) carregarVideos();
-if (!secao && !personagem && !busca) carregarAgora();
+if (!secao && !personagem && !busca) { carregarAgora(); carregarBrasil(); }
+
+async function carregarBrasil() {
+  try {
+    const lista = await buscarBrasil();
+    if (!lista.length) return;
+    document.getElementById('brasil-home-lista').innerHTML = lista.slice(0, 4).map((m) => cardBrasil(m)).join('');
+    document.getElementById('brasil-home').hidden = false;
+  } catch (e) { console.error(e); }
+}

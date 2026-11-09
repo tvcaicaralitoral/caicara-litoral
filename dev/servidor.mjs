@@ -8,6 +8,14 @@ import { fileURLToPath } from 'node:url';
 import { parsePost, ehMateria } from '../public/js/parse.js';
 import { paginaMateria } from '../scripts/pagina.mjs';
 import { baixarVideos } from '../scripts/youtube.mjs';
+import { baixarBrasil } from '../scripts/agenciabrasil.mjs';
+import { paginaBrasil } from '../scripts/pagina.mjs';
+
+let cacheBrasil = null;
+async function brasil() {
+  if (!cacheBrasil || Date.now() - cacheBrasil.t > 600000) cacheBrasil = { t: Date.now(), lista: await baixarBrasil(60) };
+  return cacheBrasil.lista;
+}
 
 const raiz = fileURLToPath(new URL('..', import.meta.url));
 const PORTA = Number(process.env.PORT) || 8788;
@@ -41,6 +49,17 @@ http.createServer(async (req, res) => {
       // No teste também usa o canal de verdade
       res.writeHead(200, { 'content-type': 'application/json' });
       return res.end(JSON.stringify({ atualizado: Date.now(), videos: await baixarVideos() }));
+    }
+    if (p === '/dados/brasil.json') {
+      res.writeHead(200, { 'content-type': 'application/json' });
+      return res.end(JSON.stringify({ atualizado: Date.now(), noticias: (await brasil()).map(({ corpo, ...m }) => m) }));
+    }
+    const bm = p.match(/^\/brasil\/([^/]+)\/?$/);
+    if (bm) {
+      const m = (await brasil()).find((x) => x.slug === bm[1]);
+      const modelo = await readFile(join(raiz, 'public/noticia.html'), 'utf8');
+      res.writeHead(m ? 200 : 404, { 'content-type': 'text/html; charset=utf-8' });
+      return res.end(m ? paginaBrasil(modelo, m) : modelo);
     }
     if (p === '/dados/aovivo.json') {
       // Para testar a faixa AO VIVO: AOVIVO=1 node dev/servidor.mjs
