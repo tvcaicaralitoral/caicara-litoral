@@ -3,6 +3,7 @@ import { SECOES } from './parse.js';
 import { PERSONAGENS } from './config.js';
 import { dataRelativa } from './render.js';
 import { iniciarAvisos } from './avisos.js';
+import { iniciarChatWhats } from './whats-chat.js';
 
 export async function buscarNoticias() {
   // O "?v=" muda a cada minuto para sempre pegar a versão mais nova
@@ -34,6 +35,7 @@ export function montarMenu(ativo = '') {
 export function iniciarPagina() {
   iniciarAvisos();
   botaoRadio();
+  iniciarChatWhats();
   const hoje = document.getElementById('hoje');
   if (hoje) {
     hoje.textContent = new Date().toLocaleDateString('pt-BR', {
