@@ -499,8 +499,9 @@ button { font: inherit; cursor: pointer; }
 .pref-lista strong { font-weight: 600; font-size: 14.5px; line-height: 1.35; color: var(--texto); }
 .pref-lista a:hover strong { color: var(--cor-principal); }
 .pref-lista small { font-size: 12px; color: var(--texto-suave); }
-.caixa-pref .ver-tudo { font-size: 14px; }
-.prefeituras-pagina { margin-top: 26px; margin-bottom: 40px; }
+.pref-cidade { margin-top: 26px; }
+.pref-cidade-topo { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.pref-cidade .pref-lista-grande { max-width: none; }
 .pref-lista-grande { background: var(--branco); border-radius: var(--raio); padding: 6px 20px; box-shadow: 0 1px 3px rgba(10,29,79,.08); max-width: 860px; }
 .pref-lista-grande a { padding: 13px 0; }
 .pref-lista-grande strong { font-size: 17px; }

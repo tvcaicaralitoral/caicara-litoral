@@ -44,17 +44,25 @@ export function itemPrefeitura(m, { mostrarCidade = true } = {}) {
   </a></li>`;
 }
 
-// Caixa na lateral da página inicial (ou da página de uma cidade)
-export async function carregarPrefeiturasLateral(cidade = '') {
-  const caixa = document.getElementById('pref-lateral');
+// Na aba de cada cidade: as notícias da prefeitura dela.
+// Na aba "Vale e Serra": as prefeituras dessas cidades juntas, com o nome de cada uma.
+export async function carregarPrefeiturasCidade(secao) {
+  const caixa = document.getElementById('pref-cidade');
   if (!caixa) return;
+  const regional = secao === 'vale-e-serra';
+  const daqui = regional
+    ? new Set(CIDADES_TEMPO.filter((c) => c.regiao === 'vale' || c.regiao === 'serra').map((c) => c.slug))
+    : new Set(CIDADES_TEMPO.some((c) => c.slug === secao) ? [secao] : []);
+  if (!daqui.size) return;
   try {
-    let lista = await buscarPrefeituras();
-    if (cidade) lista = lista.filter((m) => m.cidade === cidade);
+    const lista = (await buscarPrefeituras()).filter((m) => daqui.has(m.cidade));
     if (!lista.length) return;
-    document.getElementById('pref-titulo').textContent = cidade ? `Prefeitura de ${nomeCidade(cidade)}` : 'Das prefeituras';
-    document.getElementById('pref-lista').innerHTML = lista.slice(0, cidade ? 6 : 8).map((m) => itemPrefeitura(m, { mostrarCidade: !cidade })).join('');
-    document.getElementById('pref-ver').href = '/prefeituras/' + (cidade ? '?cidade=' + cidade : '');
+    document.getElementById('pref-titulo').textContent = regional ? 'Notícias das prefeituras do Vale e da Serra' : `Notícias da Prefeitura de ${nomeCidade(secao)}`;
+    document.getElementById('pref-lista').innerHTML = lista.slice(0, regional ? 12 : 6).map((m) => itemPrefeitura(m, { mostrarCidade: regional })).join('');
+    if (!regional) {
+      const site = document.getElementById('pref-site');
+      try { site.href = new URL(lista[0].link).origin; site.hidden = false; } catch { /* sem link */ }
+    }
     caixa.hidden = false;
   } catch (e) { console.error(e); }
 }
