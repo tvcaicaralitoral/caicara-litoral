@@ -18,10 +18,11 @@ export function montarMenu(ativo = '') {
   const itens = [
     { nome: 'Início', href: '/', slug: '' },
     ...SECOES.map((s) => ({ nome: s.nome, href: `/?secao=${s.slug}`, slug: s.slug })),
+    { nome: "Tempo", href: "/tempo/", slug: "tempo", tempo: true },
     ...PERSONAGENS.map((p) => ({ nome: p.nome, href: `/?personagem=${p.slug}`, slug: 'p:' + p.slug, destaque: true })),
   ];
   el.innerHTML = itens.map((i) =>
-    `<a href="${i.href}" class="${i.slug === ativo ? 'ativo' : ''} ${i.destaque ? 'menu-personagem' : ''}">${i.nome}</a>`).join('');
+    `<a href="${i.href}" class="${i.slug === ativo ? 'ativo' : ''} ${i.destaque ? 'menu-personagem' : ''} ${i.tempo ? 'menu-tempo' : ''}">${i.nome}</a>`).join('');
   // No celular, rola o menu até a seção atual
   const atual = el.querySelector('.ativo');
   if (atual && atual !== el.firstElementChild) el.scrollLeft = atual.offsetLeft - el.clientWidth / 2 + atual.offsetWidth / 2;

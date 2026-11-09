@@ -84,6 +84,7 @@ async function main() {
 
   const urls = [
     `<url><loc>${SITE.url}/</loc><changefreq>hourly</changefreq></url>`,
+    `<url><loc>${SITE.url}/tempo/</loc><changefreq>hourly</changefreq></url>`,
     ...noticias.posts.map((p) => `<url><loc>${esc(SITE.url + linkMateria(p))}</loc><lastmod>${esc(p.data)}</lastmod></url>`),
   ];
   await writeFile(join(saida, 'sitemap.xml'),
