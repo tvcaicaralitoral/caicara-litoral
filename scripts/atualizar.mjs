@@ -2,7 +2,8 @@
 //  - busca os posts do Instagram e os vídeos do YouTube
 //  - cria uma página para cada matéria (com foto e título para WhatsApp/Facebook/Google)
 // Roda sozinho no GitHub a cada 15 minutos. Para testar no computador: npm run gerar
-import { readFile, writeFile, mkdir, rm, cp } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rm, cp, readdir } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parsePost, ehMateria } from '../public/js/parse.js';
@@ -74,6 +75,27 @@ async function pegarAoVivo() {
 
 const json = (o) => JSON.stringify(o);
 
+// Coloca "?v=<versão>" em todos os .js e .css do site. A versão só muda quando o código muda,
+// então o navegador de quem visita nunca mistura arquivos novos com antigos guardados.
+async function carimbarVersao() {
+  const arquivos = async (pasta) => (await readdir(pasta, { recursive: true, withFileTypes: true }))
+    .filter((d) => d.isFile()).map((d) => join(d.parentPath ?? d.path, d.name));
+  const todos = await arquivos(saida);
+  const codigo = todos.filter((a) => /\.(js|css)$/.test(a)).sort();
+  const hash = createHash('sha1');
+  for (const a of codigo) hash.update(await readFile(a));
+  const v = hash.digest('hex').slice(0, 8);
+  for (const a of todos.filter((x) => /\.(js|html)$/.test(x))) {
+    const antes = await readFile(a, 'utf8');
+    const depois = antes
+      .replace(/(from\s+['"]\.{1,2}\/[\w./-]+\.js)(['"])/g, `$1?v=${v}$2`)
+      .replace(/(import\(\s*['"]\.{1,2}\/[\w./-]+\.js)(['"])/g, `$1?v=${v}$2`)
+      .replace(/((?:src|href)="\/(?:js|css)\/[\w./-]+\.(?:js|css))(")/g, `$1?v=${v}$2`);
+    if (depois !== antes) await writeFile(a, depois);
+  }
+  return v;
+}
+
 async function main() {
   await rm(saida, { recursive: true, force: true });
   await cp(join(raiz, 'public'), saida, { recursive: true });
@@ -107,7 +129,8 @@ async function main() {
   await writeFile(join(saida, 'CNAME'), new URL(SITE.url).hostname + '\n');
   await writeFile(join(saida, '.nojekyll'), '');
 
-  console.log(`✓ Site gerado em _site (${noticias.posts.length} matérias)`);
+  const versao = await carimbarVersao();
+  console.log(`✓ Site gerado em _site (${noticias.posts.length} matérias, versão ${versao})`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
