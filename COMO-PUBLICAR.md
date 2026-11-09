@@ -61,6 +61,26 @@ Leva de alguns minutos a algumas horas para funcionar.
 Pronto: as notícias aparecem na próxima atualização (até ~15 min).
 Para atualizar na hora: aba **Actions → Atualizar site → Run workflow**.
 
+## 4. Ligar a faixa AO VIVO do YouTube (chave grátis do Google)
+
+1. <https://console.cloud.google.com/> → crie um projeto (ex.: "Caiçara Litoral").
+2. **APIs e serviços → Biblioteca** → ative **YouTube Data API v3**.
+3. **APIs e serviços → Credenciais → Criar credenciais → Chave de API**.
+   Em "Restrições da API", deixe só **YouTube Data API v3**.
+4. No GitHub: **Settings → Secrets and variables → Actions → New repository secret**
+   - Nome: `YT_KEY` — Valor: a chave.
+
+O site confere a cada atualização (~15 min) se o canal está ao vivo. Quando está, aparece a faixa
+vermelha **AO VIVO** no topo de todas as páginas e a live vira o vídeo principal da página inicial.
+Lives agendadas para as próximas 24 h aparecem numa faixa azul.
+
+## O que atualiza sozinho (sem chave)
+
+- **Agora no Litoral** (página inicial): tempo, mar, próxima maré, sol e lua da cidade escolhida.
+- **/tempo/**: previsão de 18 cidades. **/mar/**: tábua de marés e ondas nas praias.
+- **Alertas do INMET**: faixa amarela/laranja/vermelha no topo quando há aviso para alguma cidade da região.
+- Para testar os alertas no computador: <http://localhost:8788/?alerta=teste>.
+
 ---
 
 ## Mudanças do dia a dia
