@@ -28,7 +28,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-4-instagram.mp3",
-  "dur": 13.6,
+  "dur": 13.51,
   "vinheta": true
  },
  {
@@ -43,7 +43,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-7-chamada-regional.mp3",
-  "dur": 9.73,
+  "dur": 9.18,
   "vinheta": true
  },
  {
@@ -58,7 +58,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-1-institucional.mp3",
-  "dur": 30.01,
+  "dur": 29.99,
   "vinheta": true
  },
  {
@@ -103,7 +103,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-7-chamada-regional.mp3",
-  "dur": 9.73,
+  "dur": 9.18,
   "vinheta": true
  },
  {
@@ -118,7 +118,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-2-noticias.mp3",
-  "dur": 30.68,
+  "dur": 30,
   "vinheta": true
  },
  {
@@ -163,7 +163,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-7-chamada-regional.mp3",
-  "dur": 9.73,
+  "dur": 9.18,
   "vinheta": true
  },
  {
@@ -178,7 +178,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-3-mini-chaves.mp3",
-  "dur": 30,
+  "dur": 29.98,
   "vinheta": true
  },
  {
@@ -208,7 +208,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-4-instagram.mp3",
-  "dur": 13.6,
+  "dur": 13.51,
   "vinheta": true
  },
  {
@@ -223,7 +223,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-7-chamada-regional.mp3",
-  "dur": 9.73,
+  "dur": 9.18,
   "vinheta": true
  },
  {
@@ -238,7 +238,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-1-institucional.mp3",
-  "dur": 30.01,
+  "dur": 29.99,
   "vinheta": true
  },
  {
@@ -283,7 +283,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-7-chamada-regional.mp3",
-  "dur": 9.73,
+  "dur": 9.18,
   "vinheta": true
  },
  {
@@ -298,7 +298,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-2-noticias.mp3",
-  "dur": 30.68,
+  "dur": 30,
   "vinheta": true
  },
  {
@@ -343,7 +343,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-7-chamada-regional.mp3",
-  "dur": 9.73,
+  "dur": 9.18,
   "vinheta": true
  },
  {
@@ -358,7 +358,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-3-mini-chaves.mp3",
-  "dur": 30,
+  "dur": 29.98,
   "vinheta": true
  },
  {
@@ -388,7 +388,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-4-instagram.mp3",
-  "dur": 13.6,
+  "dur": 13.51,
   "vinheta": true
  },
  {
@@ -403,7 +403,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-7-chamada-regional.mp3",
-  "dur": 9.73,
+  "dur": 9.18,
   "vinheta": true
  },
  {
@@ -418,7 +418,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-1-institucional.mp3",
-  "dur": 30.01,
+  "dur": 29.99,
   "vinheta": true
  },
  {
@@ -463,7 +463,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-7-chamada-regional.mp3",
-  "dur": 9.73,
+  "dur": 9.18,
   "vinheta": true
  },
  {
@@ -478,7 +478,7 @@ export const FAIXAS = [
   "artista": "Vinheta",
   "estilo": "TV Caiçara Litoral",
   "arquivo": "vinheta-2-noticias.mp3",
-  "dur": 30.68,
+  "dur": 30,
   "vinheta": true
  },
  {
