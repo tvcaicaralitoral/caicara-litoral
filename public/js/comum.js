@@ -33,6 +33,7 @@ export function montarMenu(ativo = '') {
 
 export function iniciarPagina() {
   iniciarAvisos();
+  botaoRadio();
   const hoje = document.getElementById('hoje');
   if (hoje) {
     hoje.textContent = new Date().toLocaleDateString('pt-BR', {
@@ -53,5 +54,17 @@ export function iniciarPagina() {
     if (!b) return;
     try { await navigator.clipboard.writeText(b.dataset.url); b.textContent = 'Link copiado!'; }
     catch { prompt('Copie o link:', b.dataset.url); }
+  });
+}
+
+// Botão da Rádio Caiçara no topo: abre uma janelinha que continua tocando enquanto a pessoa navega
+function botaoRadio() {
+  const linha = document.querySelector('.cabecalho-linha');
+  if (!linha || linha.querySelector('.bt-radio')) return;
+  linha.querySelector('.busca')?.insertAdjacentHTML('beforebegin',
+    '<a class="bt-radio" href="/radio/" target="radiocaicara" rel="noopener"><span class="bt-radio-ic" aria-hidden="true">▶</span> Rádio Caiçara</a>');
+  linha.querySelector('.bt-radio').addEventListener('click', (e) => {
+    const janela = window.open('/radio/?tocar', 'radiocaicara', 'width=400,height=640');
+    if (janela) { e.preventDefault(); janela.focus(); }
   });
 }

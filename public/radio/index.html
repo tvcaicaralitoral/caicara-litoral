@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rádio Caiçara | TV Caiçara Litoral</title>
+  <meta name="description" content="Rádio Caiçara: reggae, bossa, samba e rock 24 horas, no site da TV Caiçara Litoral.">
+  <link rel="icon" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="radio-pagina">
+  <main class="radio">
+    <a class="radio-logo" href="/" target="_blank" rel="noopener" title="Abrir o site da TV Caiçara Litoral">
+      <img src="/img/logo.png" alt="TV Caiçara Litoral">
+    </a>
+    <h1>Rádio Caiçara</h1>
+    <p class="radio-sub">Reggae · Bossa e samba · Rock — 24 horas</p>
+
+    <button class="radio-play" id="bt-play" type="button" aria-label="Ouvir a rádio">
+      <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      <svg class="ic-stop" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></svg>
+    </button>
+    <p class="radio-status" id="status" aria-live="polite">Toque no play para ouvir</p>
+
+    <section class="radio-agora" aria-label="Tocando agora">
+      <span class="radio-estilo" id="estilo"></span>
+      <strong id="titulo">—</strong>
+      <span id="artista"></span>
+      <div class="radio-progresso"><div id="barra"></div></div>
+      <small id="tempo"></small>
+    </section>
+
+    <label class="radio-volume">🔈 <input type="range" id="volume" min="0" max="1" step="0.05" value="1" aria-label="Volume"> 🔊</label>
+    <p class="radio-seguir">A seguir: <span id="seguir"></span></p>
+    <p class="radio-dica">Deixe esta janela aberta e continue navegando no site.</p>
+    <p class="radio-credito" id="credito"></p>
+  </main>
+  <script type="module" src="/js/radio.js"></script>
+</body>
+</html>

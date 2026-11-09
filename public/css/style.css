@@ -506,3 +506,37 @@ button { font: inherit; cursor: pointer; }
 .pref-lista-grande a { padding: 13px 0; }
 .pref-lista-grande strong { font-size: 17px; }
 .pref-lista-grande .vazio, .pref-lista-grande .carregando { border: 0; }
+
+/* ---------- Rádio Caiçara ---------- */
+.bt-radio { display: inline-flex; align-items: center; gap: 7px; background: #fff; color: var(--cor-principal); font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 999px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+.bt-radio:hover { color: var(--cor-principal); transform: translateY(-1px); }
+.bt-radio-ic { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--cor-principal); color: #fff; font-size: 10px; padding-left: 2px; }
+.cabecalho-linha .bt-radio { margin-left: auto; }
+@media (max-width: 640px) { .bt-radio { font-size: 13px; padding: 7px 11px; } }
+@media (max-width: 720px) { .cabecalho-linha .bt-radio { margin-left: 0; align-self: center; } }
+
+.radio-pagina { min-height: 100vh; margin: 0; background: var(--fundo-marca); color: #fff; display: grid; place-items: center; }
+.radio { width: 100%; max-width: 380px; padding: 22px 18px 18px; text-align: center; box-sizing: border-box; }
+.radio-logo img { width: 92px; height: auto; }
+.radio h1 { margin: 8px 0 2px; font-size: 26px; letter-spacing: .5px; }
+.radio-sub { margin: 0 0 18px; opacity: .85; font-size: 14px; }
+.radio-play { width: 92px; height: 92px; border-radius: 50%; border: 0; background: #fff; color: var(--cor-principal); cursor: pointer; display: inline-grid; place-items: center; box-shadow: 0 6px 24px rgba(0,0,0,.25); transition: transform .15s; }
+.radio-play:hover { transform: scale(1.05); }
+.radio-play svg { width: 44px; height: 44px; }
+.radio-play .ic-stop, .tocando .radio-play .ic-play { display: none; }
+.tocando .radio-play .ic-stop { display: block; }
+.tocando .radio-play { animation: radio-pulso 2s infinite; }
+@keyframes radio-pulso { 0%,100% { box-shadow: 0 0 0 0 rgba(255,255,255,.45); } 50% { box-shadow: 0 0 0 14px rgba(255,255,255,0); } }
+.radio-status { margin: 10px 0 16px; font-size: 13px; opacity: .9; min-height: 1.2em; }
+.radio-agora { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); border-radius: var(--raio); padding: 14px; display: flex; flex-direction: column; gap: 3px; }
+.radio-estilo { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; opacity: .85; }
+.radio-agora strong { font-size: 19px; }
+.radio-agora span#artista { font-size: 13px; opacity: .85; }
+.radio-progresso { height: 4px; background: rgba(255,255,255,.25); border-radius: 4px; margin-top: 10px; overflow: hidden; }
+.radio-progresso div { height: 100%; width: 0; background: #fff; }
+.radio-agora small { font-size: 11px; opacity: .75; }
+.radio-volume { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 6px; font-size: 14px; }
+.radio-volume input { width: 160px; accent-color: #fff; }
+.radio-seguir { font-size: 13px; margin: 6px 0; opacity: .9; }
+.radio-dica { font-size: 12px; opacity: .75; margin: 10px 0 4px; }
+.radio-credito { font-size: 10.5px; opacity: .65; margin: 8px 0 0; line-height: 1.4; }
