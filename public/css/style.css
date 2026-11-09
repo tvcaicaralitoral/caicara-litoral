@@ -490,3 +490,18 @@ button { font: inherit; cursor: pointer; }
   .brasil-destaque .card-grande .card-texto { padding: 14px 16px 18px; }
 }
 @media (max-width: 420px) { .grade-4 { grid-template-columns: 1fr; } }
+
+/* ---------- Prefeituras ---------- */
+.pref-lista { list-style: none; margin: 4px 0 12px; padding: 0; }
+.pref-lista li { border-top: 1px solid var(--linha); }
+.pref-lista li:first-child { border-top: 0; }
+.pref-lista a { display: flex; flex-direction: column; gap: 2px; padding: 9px 0; }
+.pref-lista strong { font-weight: 600; font-size: 14.5px; line-height: 1.35; color: var(--texto); }
+.pref-lista a:hover strong { color: var(--cor-principal); }
+.pref-lista small { font-size: 12px; color: var(--texto-suave); }
+.caixa-pref .ver-tudo { font-size: 14px; }
+.prefeituras-pagina { margin-top: 26px; margin-bottom: 40px; }
+.pref-lista-grande { background: var(--branco); border-radius: var(--raio); padding: 6px 20px; box-shadow: 0 1px 3px rgba(10,29,79,.08); max-width: 860px; }
+.pref-lista-grande a { padding: 13px 0; }
+.pref-lista-grande strong { font-size: 17px; }
+.pref-lista-grande .vazio, .pref-lista-grande .carregando { border: 0; }

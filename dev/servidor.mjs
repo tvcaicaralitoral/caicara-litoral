@@ -10,6 +10,9 @@ import { paginaMateria } from '../scripts/pagina.mjs';
 import { baixarVideos } from '../scripts/youtube.mjs';
 import { baixarBrasil } from '../scripts/agenciabrasil.mjs';
 import { paginaBrasil } from '../scripts/pagina.mjs';
+import { baixarPrefeituras } from '../scripts/prefeituras.mjs';
+
+let cachePref = null;
 
 let cacheBrasil = null;
 async function brasil() {
@@ -49,6 +52,11 @@ http.createServer(async (req, res) => {
       // No teste também usa o canal de verdade
       res.writeHead(200, { 'content-type': 'application/json' });
       return res.end(JSON.stringify({ atualizado: Date.now(), videos: await baixarVideos() }));
+    }
+    if (p === '/dados/prefeituras.json') {
+      if (!cachePref || Date.now() - cachePref.t > 600000) cachePref = { t: Date.now(), manchetes: (await baixarPrefeituras()).manchetes };
+      res.writeHead(200, { 'content-type': 'application/json' });
+      return res.end(JSON.stringify({ atualizado: cachePref.t, manchetes: cachePref.manchetes }));
     }
     if (p === '/dados/brasil.json') {
       res.writeHead(200, { 'content-type': 'application/json' });

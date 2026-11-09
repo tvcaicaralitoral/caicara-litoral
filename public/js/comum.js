@@ -20,6 +20,7 @@ export function montarMenu(ativo = '') {
     { nome: 'Início', href: '/', slug: '' },
     ...SECOES.map((s) => ({ nome: s.nome, href: `/?secao=${s.slug}`, slug: s.slug })),
     { nome: "Brasil", href: "/brasil/", slug: "brasil" },
+    { nome: "Prefeituras", href: "/prefeituras/", slug: "prefeituras" },
     { nome: "Tempo", href: "/tempo/", slug: "tempo", tempo: true },
     { nome: "Surf e Marés", href: "/mar/", slug: "mar", mar: true },
     ...PERSONAGENS.map((p) => ({ nome: p.nome, href: `/?personagem=${p.slug}`, slug: 'p:' + p.slug, destaque: true })),

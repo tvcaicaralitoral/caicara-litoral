@@ -5,6 +5,8 @@ import { PERSONAGENS } from './config.js';
 import { carregarVideos } from './videos.js';
 import { carregarAgora } from './agora.js';
 import { buscarBrasil, cardBrasil } from './brasil-render.js';
+import { carregarPrefeiturasLateral } from './prefeituras-render.js';
+import { CIDADES_TEMPO } from './tempo-dados.js';
 
 const POR_PAGINA = 12;
 const params = new URLSearchParams(location.search);
@@ -159,6 +161,8 @@ carregar();
 // Vídeos só na página inicial (não em seções, personagens ou busca)
 if (!secao && !personagem && !busca) carregarVideos();
 if (!secao && !personagem && !busca) { carregarAgora(); carregarBrasil(); }
+// Na página de uma cidade, a caixa mostra só a prefeitura dela
+carregarPrefeiturasLateral(CIDADES_TEMPO.some((c) => c.slug === secao) ? secao : '');
 
 async function carregarBrasil() {
   try {

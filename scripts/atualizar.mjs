@@ -11,6 +11,7 @@ import { linkMateria, esc } from '../public/js/render.js';
 import { SITE } from '../public/js/config.js';
 import { paginaMateria, paginaBrasil } from './pagina.mjs';
 import { baixarBrasil } from './agenciabrasil.mjs';
+import { baixarPrefeituras } from './prefeituras.mjs';
 import { linkBrasil } from '../public/js/brasil-render.js';
 import { baixarPosts } from './instagram.mjs';
 import { baixarVideos, verificarAoVivo } from './youtube.mjs';
@@ -73,6 +74,21 @@ async function pegarBrasil() {
   }
 }
 
+async function pegarPrefeituras() {
+  const antes = (await versaoNoAr('prefeituras.json'))?.manchetes || [];
+  try {
+    const { manchetes, falhas } = await baixarPrefeituras(antes);
+    // Prefeitura que falhou desta vez: mantém as manchetes de antes
+    const ok = new Set(manchetes.map((m) => m.cidade));
+    const mantidas = antes.filter((m) => !ok.has(m.cidade));
+    console.log(`✓ Prefeituras: ${manchetes.length} manchetes${falhas.length ? ' (falharam: ' + falhas.join(', ') + ')' : ''}`);
+    return [...manchetes, ...mantidas];
+  } catch (e) {
+    console.error('✗ Prefeituras falharam:', e.message);
+    return antes;
+  }
+}
+
 async function pegarAoVivo() {
   const chave = process.env.YT_KEY;
   if (!chave || DEMO) return { ativo: false, configurado: false };
@@ -114,13 +130,14 @@ async function main() {
   await cp(join(raiz, 'public'), saida, { recursive: true });
   if (DEMO) await cp(join(raiz, 'dev/demo'), join(saida, 'dev-demo'), { recursive: true });
 
-  const [noticias, youtube, aovivo, brasilNovo] = await Promise.all([pegarPosts(), pegarVideos(), pegarAoVivo(), pegarBrasil()]);
+  const [noticias, youtube, aovivo, brasilNovo, prefeituras] = await Promise.all([pegarPosts(), pegarVideos(), pegarAoVivo(), pegarBrasil(), DEMO ? baixarPrefeituras().then((r) => r.manchetes).catch(() => []) : pegarPrefeituras()]);
   const brasil = brasilNovo || [];
   const agora = Date.now();
   await mkdir(join(saida, 'dados'), { recursive: true });
   await writeFile(join(saida, 'dados/noticias.json'), json({ atualizado: agora, ...noticias }));
   await writeFile(join(saida, 'dados/youtube.json'), json({ atualizado: agora, ...youtube }));
   await writeFile(join(saida, 'dados/aovivo.json'), json({ atualizado: agora, ...aovivo }));
+  await writeFile(join(saida, 'dados/prefeituras.json'), json({ atualizado: agora, manchetes: prefeituras }));
   // Lista leve (sem o texto) para as páginas; o texto vai direto na página de cada notícia
   await writeFile(join(saida, 'dados/brasil.json'), json({ atualizado: agora, fonte: 'Agência Brasil', noticias: brasil.map(({ corpo, ...m }) => m) }));
 
@@ -145,6 +162,7 @@ async function main() {
     `<url><loc>${SITE.url}/tempo/</loc><changefreq>hourly</changefreq></url>`,
     `<url><loc>${SITE.url}/mar/</loc><changefreq>hourly</changefreq></url>`,
     `<url><loc>${SITE.url}/brasil/</loc><changefreq>hourly</changefreq></url>`,
+    `<url><loc>${SITE.url}/prefeituras/</loc><changefreq>hourly</changefreq></url>`,
     ...noticias.posts.map((p) => `<url><loc>${esc(SITE.url + linkMateria(p))}</loc><lastmod>${esc(p.data)}</lastmod></url>`),
   ];
   await writeFile(join(saida, 'sitemap.xml'),
