@@ -9,11 +9,27 @@ export const FAIXAS = [
   "dur": 240.07
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-8-identificacao.mp3",
+  "dur": 6,
+  "vinheta": true
+ },
+ {
   "titulo": "Bossa Antigua",
   "artista": "Kevin MacLeod",
   "estilo": "Bossa e samba",
   "arquivo": "bossa-antigua.mp3",
   "dur": 283.35
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-4-instagram.mp3",
+  "dur": 13.6,
+  "vinheta": true
  },
  {
   "titulo": "Happy Bee - Surf",
@@ -23,11 +39,27 @@ export const FAIXAS = [
   "dur": 309.16
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-7-chamada-regional.mp3",
+  "dur": 9.73,
+  "vinheta": true
+ },
+ {
   "titulo": "Montego",
   "artista": "Kevin MacLeod",
   "estilo": "Reggae",
   "arquivo": "montego.mp3",
   "dur": 206
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-1-institucional.mp3",
+  "dur": 30.01,
+  "vinheta": true
  },
  {
   "titulo": "Samba Isobel",
@@ -37,11 +69,27 @@ export const FAIXAS = [
   "dur": 250.17
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-8-identificacao.mp3",
+  "dur": 6,
+  "vinheta": true
+ },
+ {
   "titulo": "Happy Bee",
   "artista": "Kevin MacLeod",
   "estilo": "Rock",
   "arquivo": "happy-bee.mp3",
   "dur": 302
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-5-facebook-tiktok.mp3",
+  "dur": 13.51,
+  "vinheta": true
  },
  {
   "titulo": "Mandeville",
@@ -51,11 +99,27 @@ export const FAIXAS = [
   "dur": 217.03
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-7-chamada-regional.mp3",
+  "dur": 9.73,
+  "vinheta": true
+ },
+ {
   "titulo": "BossaBossa",
   "artista": "Kevin MacLeod",
   "estilo": "Bossa e samba",
   "arquivo": "bossabossa.mp3",
   "dur": 167.29
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-2-noticias.mp3",
+  "dur": 30.68,
+  "vinheta": true
  },
  {
   "titulo": "Malt Shop Bop",
@@ -65,11 +129,27 @@ export const FAIXAS = [
   "dur": 166.09
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-8-identificacao.mp3",
+  "dur": 6,
+  "vinheta": true
+ },
+ {
   "titulo": "Yallahs",
   "artista": "Kevin MacLeod",
   "estilo": "Reggae",
   "arquivo": "yallahs.mp3",
   "dur": 227.71
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-6-vale-night.mp3",
+  "dur": 13.5,
+  "vinheta": true
  },
  {
   "titulo": "Casa Bossa Nova",
@@ -79,11 +159,27 @@ export const FAIXAS = [
   "dur": 242.13
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-7-chamada-regional.mp3",
+  "dur": 9.73,
+  "vinheta": true
+ },
+ {
   "titulo": "Sock Hop",
   "artista": "Kevin MacLeod",
   "estilo": "Rock",
   "arquivo": "sock-hop.mp3",
   "dur": 166.5
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-3-mini-chaves.mp3",
+  "dur": 30,
+  "vinheta": true
  },
  {
   "titulo": "Tea Roots",
@@ -93,11 +189,27 @@ export const FAIXAS = [
   "dur": 279.51
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-8-identificacao.mp3",
+  "dur": 6,
+  "vinheta": true
+ },
+ {
   "titulo": "Modern Jazz Samba",
   "artista": "Kevin MacLeod",
   "estilo": "Bossa e samba",
   "arquivo": "modern-jazz-samba.mp3",
   "dur": 248.53
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-4-instagram.mp3",
+  "dur": 13.6,
+  "vinheta": true
  },
  {
   "titulo": "Twisted",
@@ -107,11 +219,27 @@ export const FAIXAS = [
   "dur": 187.19
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-7-chamada-regional.mp3",
+  "dur": 9.73,
+  "vinheta": true
+ },
+ {
   "titulo": "Easy Jam",
   "artista": "Kevin MacLeod",
   "estilo": "Reggae",
   "arquivo": "easy-jam.mp3",
   "dur": 296.12
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-1-institucional.mp3",
+  "dur": 30.01,
+  "vinheta": true
  },
  {
   "titulo": "Leblon",
@@ -121,11 +249,27 @@ export const FAIXAS = [
   "dur": 196.78
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-8-identificacao.mp3",
+  "dur": 6,
+  "vinheta": true
+ },
+ {
   "titulo": "Cold Funk",
   "artista": "Kevin MacLeod",
   "estilo": "Rock",
   "arquivo": "cold-funk.mp3",
   "dur": 288.29
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-5-facebook-tiktok.mp3",
+  "dur": 13.51,
+  "vinheta": true
  },
  {
   "titulo": "Gonna Start",
@@ -135,11 +279,27 @@ export const FAIXAS = [
   "dur": 190.75
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-7-chamada-regional.mp3",
+  "dur": 9.73,
+  "vinheta": true
+ },
+ {
   "titulo": "Lagoa v1",
   "artista": "Kevin MacLeod",
   "estilo": "Bossa e samba",
   "arquivo": "lagoa-v1.mp3",
   "dur": 231.26
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-2-noticias.mp3",
+  "dur": 30.68,
+  "vinheta": true
  },
  {
   "titulo": "Motivator",
@@ -149,11 +309,27 @@ export const FAIXAS = [
   "dur": 237.82
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-8-identificacao.mp3",
+  "dur": 6,
+  "vinheta": true
+ },
+ {
   "titulo": "Thief in the Night",
   "artista": "Kevin MacLeod",
   "estilo": "Reggae",
   "arquivo": "thief-in-the-night.mp3",
   "dur": 184.69
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-6-vale-night.mp3",
+  "dur": 13.5,
+  "vinheta": true
  },
  {
   "titulo": "Suvaco do Cristo",
@@ -163,11 +339,27 @@ export const FAIXAS = [
   "dur": 156.5
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-7-chamada-regional.mp3",
+  "dur": 9.73,
+  "vinheta": true
+ },
+ {
   "titulo": "Riptide",
   "artista": "Kevin MacLeod",
   "estilo": "Rock",
   "arquivo": "riptide.mp3",
   "dur": 333.34
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-3-mini-chaves.mp3",
+  "dur": 30,
+  "vinheta": true
  },
  {
   "titulo": "Sunday Dub",
@@ -177,11 +369,27 @@ export const FAIXAS = [
   "dur": 209.48
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-8-identificacao.mp3",
+  "dur": 6,
+  "vinheta": true
+ },
+ {
   "titulo": "Carnivale Intrigue",
   "artista": "Kevin MacLeod",
   "estilo": "Bossa e samba",
   "arquivo": "carnivale-intrigue.mp3",
   "dur": 199.65
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-4-instagram.mp3",
+  "dur": 13.6,
+  "vinheta": true
  },
  {
   "titulo": "Cool Rock",
@@ -191,11 +399,27 @@ export const FAIXAS = [
   "dur": 209.37
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-7-chamada-regional.mp3",
+  "dur": 9.73,
+  "vinheta": true
+ },
+ {
   "titulo": "Blue Ska",
   "artista": "Kevin MacLeod",
   "estilo": "Reggae",
   "arquivo": "blue-ska.mp3",
   "dur": 146.26
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-1-institucional.mp3",
+  "dur": 30.01,
+  "vinheta": true
  },
  {
   "titulo": "Paradise Found",
@@ -205,11 +429,27 @@ export const FAIXAS = [
   "dur": 187.48
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-8-identificacao.mp3",
+  "dur": 6,
+  "vinheta": true
+ },
+ {
   "titulo": "Hotrock",
   "artista": "Kevin MacLeod",
   "estilo": "Rock",
   "arquivo": "hotrock.mp3",
   "dur": 204.72
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-5-facebook-tiktok.mp3",
+  "dur": 13.51,
+  "vinheta": true
  },
  {
   "titulo": "Upbeat Forever",
@@ -219,11 +459,27 @@ export const FAIXAS = [
   "dur": 194.69
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-7-chamada-regional.mp3",
+  "dur": 9.73,
+  "vinheta": true
+ },
+ {
   "titulo": "I Feel You",
   "artista": "Kevin MacLeod",
   "estilo": "Rock",
   "arquivo": "i-feel-you.mp3",
   "dur": 188.06
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-2-noticias.mp3",
+  "dur": 30.68,
+  "vinheta": true
  },
  {
   "titulo": "Stealth Groover",
@@ -233,10 +489,26 @@ export const FAIXAS = [
   "dur": 200.06
  },
  {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-8-identificacao.mp3",
+  "dur": 6,
+  "vinheta": true
+ },
+ {
   "titulo": "RetroFuture Clean",
   "artista": "Kevin MacLeod",
   "estilo": "Rock",
   "arquivo": "retrofuture-clean.mp3",
   "dur": 206.21
+ },
+ {
+  "titulo": "Rádio da TV Caiçara Litoral",
+  "artista": "Vinheta",
+  "estilo": "TV Caiçara Litoral",
+  "arquivo": "vinheta-6-vale-night.mp3",
+  "dur": 13.5,
+  "vinheta": true
  }
 ];

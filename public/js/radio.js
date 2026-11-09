@@ -22,7 +22,10 @@ const mmss = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart
 
 function mostrar(i) {
   const f = FAIXAS[i];
-  const prox = FAIXAS[(i + 1) % FAIXAS.length];
+  // "A seguir" mostra a próxima música (pula as vinhetas)
+  let j = (i + 1) % FAIXAS.length;
+  while (FAIXAS[j].vinheta && j !== i) j = (j + 1) % FAIXAS.length;
+  const prox = FAIXAS[j];
   el('estilo').textContent = f.estilo;
   el('titulo').textContent = f.titulo;
   el('artista').textContent = f.artista;
