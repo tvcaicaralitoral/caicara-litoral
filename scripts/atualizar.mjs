@@ -12,6 +12,7 @@ import { SITE } from '../public/js/config.js';
 import { paginaMateria, paginaBrasil } from './pagina.mjs';
 import { baixarBrasil } from './agenciabrasil.mjs';
 import { baixarPrefeituras } from './prefeituras.mjs';
+import { baixarFutebol } from './futebol.mjs';
 import { linkBrasil } from '../public/js/brasil-render.js';
 import { baixarPosts } from './instagram.mjs';
 import { baixarVideos, verificarAoVivo } from './youtube.mjs';
@@ -89,6 +90,21 @@ async function pegarPrefeituras() {
   }
 }
 
+async function pegarFutebol() {
+  const antes = (await versaoNoAr('futebol.json'))?.ligas || [];
+  try {
+    const { ligas, falhas } = await baixarFutebol();
+    // Série que falhou desta vez: mantém a versão anterior
+    const ok = new Set(ligas.map((l) => l.id));
+    const mantidas = antes.filter((l) => !ok.has(l.id));
+    console.log(`✓ Brasileirão: ${ligas.map((l) => l.nome + ' ' + l.jogos.length + ' jogos').join(', ')}${falhas.length ? ' (falharam: ' + falhas.join('; ') + ')' : ''}`);
+    return [...ligas, ...mantidas].sort((x, y) => x.id.localeCompare(y.id));
+  } catch (e) {
+    console.error('✗ Brasileirão falhou:', e.message);
+    return antes;
+  }
+}
+
 async function pegarAoVivo() {
   const chave = process.env.YT_KEY;
   if (!chave || DEMO) return { ativo: false, configurado: false };
@@ -130,7 +146,7 @@ async function main() {
   await cp(join(raiz, 'public'), saida, { recursive: true });
   if (DEMO) await cp(join(raiz, 'dev/demo'), join(saida, 'dev-demo'), { recursive: true });
 
-  const [noticias, youtube, aovivo, brasilNovo, prefeituras] = await Promise.all([pegarPosts(), pegarVideos(), pegarAoVivo(), pegarBrasil(), DEMO ? baixarPrefeituras().then((r) => r.manchetes).catch(() => []) : pegarPrefeituras()]);
+  const [noticias, youtube, aovivo, brasilNovo, prefeituras, futebol] = await Promise.all([pegarPosts(), pegarVideos(), pegarAoVivo(), pegarBrasil(), DEMO ? baixarPrefeituras().then((r) => r.manchetes).catch(() => []) : pegarPrefeituras(), DEMO ? baixarFutebol().then((r) => r.ligas).catch(() => []) : pegarFutebol()]);
   const brasil = brasilNovo || [];
   const agora = Date.now();
   await mkdir(join(saida, 'dados'), { recursive: true });
@@ -138,6 +154,7 @@ async function main() {
   await writeFile(join(saida, 'dados/youtube.json'), json({ atualizado: agora, ...youtube }));
   await writeFile(join(saida, 'dados/aovivo.json'), json({ atualizado: agora, ...aovivo }));
   await writeFile(join(saida, 'dados/prefeituras.json'), json({ atualizado: agora, manchetes: prefeituras }));
+  await writeFile(join(saida, 'dados/futebol.json'), json({ atualizado: agora, fonte: 'ESPN', ligas: futebol }));
   // Lista leve (sem o texto) para as páginas; o texto vai direto na página de cada notícia
   await writeFile(join(saida, 'dados/brasil.json'), json({ atualizado: agora, fonte: 'Agência Brasil', noticias: brasil.map(({ corpo, ...m }) => m) }));
 

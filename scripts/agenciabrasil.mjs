@@ -76,5 +76,9 @@ export async function baixarBrasil(limite = 60) {
     for (const m of r.value) if (m.slug && m.titulo && m.corpo && !vistos.has(m.slug)) vistos.set(m.slug, m);
   }
   if (!vistos.size) throw new Error('nenhuma notícia da Agência Brasil');
-  return [...vistos.values()].sort((a, b) => b.data.localeCompare(a.data)).slice(0, limite);
+  const todas = [...vistos.values()].sort((a, b) => b.data.localeCompare(a.data));
+  const lista = todas.slice(0, limite);
+  // A aba Esportes mostra as de esporte: inclui até 12 mesmo que fiquem fora das mais recentes
+  const esportes = todas.filter((m) => m.editoria === 'Esportes' && !lista.includes(m)).slice(0, Math.max(0, 12 - lista.filter((m) => m.editoria === 'Esportes').length));
+  return [...lista, ...esportes];
 }

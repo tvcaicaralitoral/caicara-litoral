@@ -6,6 +6,7 @@ import { carregarVideos } from './videos.js';
 import { carregarAgora } from './agora.js';
 import { buscarBrasil, cardBrasil } from './brasil-render.js';
 import { carregarPrefeiturasCidade } from './prefeituras-render.js';
+import { carregarEsportes } from './esportes.js';
 
 const POR_PAGINA = 12;
 const params = new URLSearchParams(location.search);
@@ -87,7 +88,7 @@ function renderLista() {
   lista.innerHTML = resto.slice(0, mostrando).map((p) => card(p)).join('');
   document.getElementById('mais').hidden = mostrando >= resto.length;
   if (!resto.length && !temTopo) {
-    lista.innerHTML = `<p class="vazio">Nenhuma notícia encontrada${personagem ? ` com ${esc(personagem.nome)} ainda` : ''}.</p>`;
+    lista.innerHTML = secao === 'esportes' ? '' : `<p class="vazio">Nenhuma notícia encontrada${personagem ? ` com ${esc(personagem.nome)} ainda` : ''}.</p>`;
   }
 }
 
@@ -162,6 +163,8 @@ if (!secao && !personagem && !busca) carregarVideos();
 if (!secao && !personagem && !busca) { carregarAgora(); carregarBrasil(); }
 // Na aba de cada cidade, as notícias da prefeitura dela
 if (secao && !personagem && !busca) carregarPrefeiturasCidade(secao);
+// Aba Esportes: Brasileirão e notícias de esporte
+if (secao === 'esportes' && !personagem && !busca) carregarEsportes();
 
 async function carregarBrasil() {
   try {

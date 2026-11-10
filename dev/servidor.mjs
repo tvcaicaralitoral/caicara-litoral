@@ -11,6 +11,9 @@ import { baixarVideos } from '../scripts/youtube.mjs';
 import { baixarBrasil } from '../scripts/agenciabrasil.mjs';
 import { paginaBrasil } from '../scripts/pagina.mjs';
 import { baixarPrefeituras } from '../scripts/prefeituras.mjs';
+import { baixarFutebol } from '../scripts/futebol.mjs';
+
+let cacheFut = null;
 
 let cachePref = null;
 
@@ -57,6 +60,11 @@ http.createServer(async (req, res) => {
       if (!cachePref || Date.now() - cachePref.t > 600000) cachePref = { t: Date.now(), manchetes: (await baixarPrefeituras()).manchetes };
       res.writeHead(200, { 'content-type': 'application/json' });
       return res.end(JSON.stringify({ atualizado: cachePref.t, manchetes: cachePref.manchetes }));
+    }
+    if (p === '/dados/futebol.json') {
+      if (!cacheFut || Date.now() - cacheFut.t > 300000) cacheFut = { t: Date.now(), ligas: (await baixarFutebol()).ligas };
+      res.writeHead(200, { 'content-type': 'application/json' });
+      return res.end(JSON.stringify({ atualizado: cacheFut.t, fonte: 'ESPN', ligas: cacheFut.ligas }));
     }
     if (p === '/dados/brasil.json') {
       res.writeHead(200, { 'content-type': 'application/json' });
