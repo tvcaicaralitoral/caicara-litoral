@@ -621,3 +621,32 @@ button { font: inherit; cursor: pointer; }
 .br-legenda i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
 @media (max-width: 860px) { .br-grade { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .jogo { font-size: 13.5px; gap: 6px; } .br-tabela { font-size: 13px; } .br-tabela th, .br-tabela td { padding: 6px 3px; } }
+
+/* ---------- Conheça a cidade (pontos turísticos) ---------- */
+.turismo { margin-top: 30px; }
+.tur-filtros { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0 14px; }
+.tur-filtros button { border: 1.5px solid var(--linha); background: var(--branco); color: var(--texto); font: inherit; font-size: 13.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.tur-filtros button[aria-pressed="true"] { background: var(--cor-principal); border-color: var(--cor-principal); color: #fff; }
+.tur-grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.tur-card { display: flex; flex-direction: column; padding: 0; border: 0; background: var(--branco); border-radius: var(--raio); overflow: hidden; box-shadow: 0 1px 3px rgba(10,29,79,.08); cursor: pointer; text-align: left; font: inherit; color: inherit; transition: transform .15s, box-shadow .15s; }
+.tur-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(10,29,79,.14); }
+.tur-foto { display: block; aspect-ratio: 3 / 2; background: var(--degrade); overflow: hidden; }
+.tur-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tur-foto.sem-foto img { display: none; }
+.tur-texto { display: flex; flex-direction: column; gap: 3px; padding: 10px 12px 14px; }
+.tur-texto strong { font-size: 16px; line-height: 1.3; }
+.tur-card:hover strong { color: var(--cor-principal); }
+.tur-detalhe { width: min(640px, calc(100vw - 24px)); max-height: calc(100vh - 32px); padding: 0; border: 0; border-radius: 14px; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+.tur-detalhe::backdrop { background: rgba(10,20,45,.6); }
+.tur-detalhe-foto { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: var(--degrade); }
+.tur-credito { display: block; font-size: 11px; color: var(--texto-suave); padding: 5px 14px 0; }
+.tur-credito a { color: inherit; }
+.tur-detalhe-corpo { padding: 8px 20px 22px; }
+.tur-detalhe-corpo h3 { font-size: 24px; margin: 4px 0 8px; }
+.tur-detalhe-corpo p { margin: 0 0 10px; line-height: 1.55; }
+.tur-dica { background: #eef7f8; border-left: 4px solid var(--cor-secundaria); padding: 9px 12px; border-radius: 6px; font-size: 14.5px; }
+.tur-mapa { display: inline-flex; margin-top: 4px; background: var(--cor-principal); color: #fff; }
+.tur-mapa:hover { color: #fff; filter: brightness(1.1); }
+.tur-fechar { position: sticky; top: 8px; float: right; margin: 8px 8px -44px 0; width: 36px; height: 36px; border-radius: 50%; border: 0; background: rgba(0,0,0,.55); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; z-index: 2; }
+@media (max-width: 960px) { .tur-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .tur-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .tur-texto strong { font-size: 14.5px; } }

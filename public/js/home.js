@@ -7,6 +7,7 @@ import { carregarAgora } from './agora.js';
 import { buscarBrasil, cardBrasil } from './brasil-render.js';
 import { carregarPrefeiturasCidade } from './prefeituras-render.js';
 import { carregarEsportes } from './esportes.js';
+import { carregarTurismo } from './turismo.js';
 
 const POR_PAGINA = 12;
 const params = new URLSearchParams(location.search);
@@ -162,7 +163,7 @@ carregar();
 if (!secao && !personagem && !busca) carregarVideos();
 if (!secao && !personagem && !busca) { carregarAgora(); carregarBrasil(); }
 // Na aba de cada cidade, as notícias da prefeitura dela
-if (secao && !personagem && !busca) carregarPrefeiturasCidade(secao);
+if (secao && !personagem && !busca) { carregarPrefeiturasCidade(secao); carregarTurismo(secao); }
 // Aba Esportes: Brasileirão e notícias de esporte
 if (secao === 'esportes' && !personagem && !busca) carregarEsportes();
 
